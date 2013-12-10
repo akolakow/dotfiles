@@ -10,6 +10,12 @@ set expandtab
 
 set t_Co=256
 
+
+set completeopt-=preview    "scratch disable
+
+
+
+
 set nocompatible              " be iMproved
 filetype off                  " required!
 
@@ -20,7 +26,6 @@ Bundle 'gmarik/vundle'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'scrooloose/nerdtree'
 Bundle 'molokai'
-Bundle 'monokai'
 Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kien/ctrlp.vim'
@@ -77,4 +82,13 @@ nnoremap N Nzzzv
 nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
+
+
+set textwidth=80
+set colorcolumn=+1
+
+hi Visual                      ctermbg=0 cterm=reverse
+hi CursorLine                  ctermbg=239   cterm=none
+hi ColorColumn ctermbg=239 guibg=#FF0000
+
 
