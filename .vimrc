@@ -88,7 +88,7 @@ set textwidth=80
 set colorcolumn=+1
 
 hi Visual                      ctermbg=0 cterm=reverse
-hi CursorLine                  ctermbg=239   cterm=none
-hi ColorColumn ctermbg=239 guibg=#FF0000
+hi CursorLine                  ctermbg=236   cterm=none
+hi ColorColumn ctermbg=236 guibg=#FF0000
 
 
