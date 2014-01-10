@@ -49,6 +49,8 @@ let g:NERDTreeWinPos = "right"
 map <F2> :NERDTreeTabsToggle<CR>
 map <F3> :NERDTreeFind<CR>
 
+"CtrlP
+let g:ctrlp_max_files = 20000
 
 "molokai
 colorscheme molokai
@@ -84,11 +86,17 @@ nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
 
+" center cursor
+set so=999
+nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+
+
 set textwidth=80
 set colorcolumn=+1
 
 hi Visual                      ctermbg=0 cterm=reverse
 hi CursorLine                  ctermbg=236   cterm=none
 hi ColorColumn ctermbg=236 guibg=#FF0000
-
+hi Comment       ctermfg=245
 
