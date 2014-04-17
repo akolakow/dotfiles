@@ -13,8 +13,10 @@ set t_Co=256
 
 set completeopt-=preview    "scratch disable
 
+set mouse=a
 
 
+set makeprg=/home/akolakow/work/prefix/native/bin/crosswaf\ build
 
 set nocompatible              " be iMproved
 filetype off                  " required!
@@ -36,6 +38,8 @@ Bundle 'tpope/vim-sensible'
 Bundle 'vim-scripts/CSApprox'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'bling/vim-airline'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'rhysd/vim-clang-format'
 
 filetype plugin indent on     " required!
 
@@ -48,6 +52,15 @@ let g:NERDTreeWinPos = "right"
 "let g:nerdtree_tabs_open_on_console_startup = 1
 map <F2> :NERDTreeTabsToggle<CR>
 map <F3> :NERDTreeFind<CR>
+
+
+" refresh all buffers
+map <F5> :checktime<CR>
+
+
+"clang format"
+map <F8> :ClangFormat<CR>
+
 
 "CtrlP
 let g:ctrlp_max_files = 20000
@@ -87,8 +100,8 @@ nnoremap <c-o> <c-o>zz
 
 
 " center cursor
-set so=999
-nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+"set so=999
+"nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 
 
@@ -99,4 +112,3 @@ hi Visual                      ctermbg=0 cterm=reverse
 hi CursorLine                  ctermbg=236   cterm=none
 hi ColorColumn ctermbg=236 guibg=#FF0000
 hi Comment       ctermfg=245
-
