@@ -60,7 +60,23 @@ map <F5> :checktime<CR>
 
 "clang format"
 map <F8> :ClangFormat<CR>
-
+let g:clang_format#style_options = {
+    \ "AccessModifierOffset" : -4,
+    \ "UseTab" : "Never",
+    \ "BreakBeforeBraces" : "Allman",
+    \ "AllowShortIfStatementsOnASingleLine" : "false",
+    \ "AlignEscapedNewlinesLeft" : "true",
+    \ "IndentCaseLabels" : "true",
+    \ "ColumnLimit" : 90,
+    \ "IndentWidth" : 4,
+    \ "NamespaceIndentation" : "None",
+    \ "MaxEmptyLinesToKeep" : 1,
+    \ "PointerBindsToType" : "true",
+    \ "SpaceAfterControlStatementKeyword" : "true",
+    \ "SpaceBeforeAssignmentOperators" : "true",
+    \ "SpaceInEmptyParentheses" : "false",
+    \ "SpacesInParentheses" : "false",
+    \ "Standard" : "Auto"}
 
 "CtrlP
 let g:ctrlp_max_files = 20000
