@@ -16,7 +16,6 @@ set completeopt-=preview    "scratch disable
 set mouse=a
 
 
-set makeprg=/home/akolakow/work/prefix/native/bin/crosswaf\ build
 
 set nocompatible              " be iMproved
 filetype off                  " required!
@@ -57,6 +56,10 @@ map <F3> :NERDTreeFind<CR>
 " refresh all buffers
 map <F5> :checktime<CR>
 
+
+" build shortcut
+"set makeprg=/home/akolakow/work/prefix/native/bin/crosswaf\ build
+map <F6> :make<CR> :cw<CR>
 
 "clang format"
 map <F8> :ClangFormat<CR>
