@@ -25,6 +25,7 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 Bundle 'Rip-Rip/clang_complete'
+" Bundle 'Valloric/YouCompleteMe'
 Bundle 'scrooloose/nerdtree'
 Bundle 'molokai'
 Bundle 'octol/vim-cpp-enhanced-highlight'
@@ -39,7 +40,11 @@ Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'rhysd/vim-clang-format'
-
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
+Bundle 'xaizek/vim-inccomplete'
 filetype plugin indent on     " required!
 
 "airline
@@ -119,8 +124,47 @@ nnoremap <c-o> <c-o>zz
 
 
 " center cursor
-"set so=999
-"nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+" set so=999
+" nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
+
+" go to
+nnoremap <leader>] :YcmCompleter GoTo<CR>
+
+
+
+" clang complete
+let g:clang_auto_select=1
+let g:clang_complete_auto=1
+let g:clang_hl_errors=0
+let g:clang_complete_macros=1
+let g:clang_use_library=1
+let g:clang_user_options='|| exit 0'
+let g:clang_jumpto_back_key='<leader>['
+let g:clang_jumpto_declaration_key='<leader>]'
+let g:clang_library_path='/usr/lib/'
+set completeopt=longest,menuone
+
+
+ " syntastic
+let g:syntastic_cpp_compiler='clang++'
+let g:syntastic_cpp_compiler_options=' -std=c++11'
+let g:syntastic_cpp_check_header=1
+let g:syntastic_cpp_remove_include_errors=1
+let g:syntastic_cpp_config_file='.clang_complete'
+let g:syntastic_c_config_file='.clang_complete'
+let g:syntastic_enable_highlighting=0
+
+" ctrl-space autocompletion
+if has("gui_running")
+    " c-space seems to work under gVim on both Linux and win32
+    inoremap <c-space> <c-x><c-u>
+else " no gui
+  if has("unix")
+    inoremap <nul> <c-x><c-u>
+  else
+  " no idea of the name of ctrl-space elsewhere
+  endif
+endif
 
 
 
@@ -131,3 +175,5 @@ hi Visual                      ctermbg=0 cterm=reverse
 hi CursorLine                  ctermbg=236   cterm=none
 hi ColorColumn ctermbg=236 guibg=#FF0000
 hi Comment       ctermfg=245
+hi SpellBad ctermbg=Red ctermfg=0
+hi PmenuSel ctermbg=0 cterm=reverse
