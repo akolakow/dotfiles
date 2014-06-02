@@ -173,6 +173,8 @@ set colorcolumn=+1
 
 hi Visual                      ctermbg=0 cterm=reverse
 hi CursorLine                  ctermbg=236   cterm=none
+hi CursorLineNr                ctermfg=11   cterm=bold
+hi LineNr                ctermfg=241
 hi ColorColumn ctermbg=236 guibg=#FF0000
 hi Comment       ctermfg=245
 hi SpellBad ctermbg=Red ctermfg=0
