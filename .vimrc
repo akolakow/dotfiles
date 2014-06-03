@@ -45,6 +45,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'xaizek/vim-inccomplete'
+
 filetype plugin indent on     " required!
 
 "airline
@@ -123,6 +124,8 @@ nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
 
+
+
 " center cursor
 " set so=999
 " nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
@@ -166,8 +169,6 @@ else " no gui
   endif
 endif
 
-
-
 set textwidth=80
 set colorcolumn=+1
 
@@ -179,3 +180,4 @@ hi ColorColumn ctermbg=236 guibg=#FF0000
 hi Comment       ctermfg=245
 hi SpellBad ctermbg=Red ctermfg=0
 hi PmenuSel ctermbg=0 cterm=reverse
+hi Search ctermbg=11 ctermfg=16
