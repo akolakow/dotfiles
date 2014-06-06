@@ -46,6 +46,9 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'xaizek/vim-inccomplete'
 
+Bundle 'davidhalter/jedi'
+Bundle 'davidhalter/jedi-vim'
+
 filetype plugin indent on     " required!
 
 "airline
@@ -171,6 +174,13 @@ endif
 
 set textwidth=80
 set colorcolumn=+1
+
+
+
+" pyjedi
+let g:jedi#auto_vim_configuration = 0
+
+set completeopt-=preview
 
 hi Visual                      ctermbg=0 cterm=reverse
 hi CursorLine                  ctermbg=236   cterm=none
