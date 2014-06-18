@@ -49,6 +49,10 @@ Bundle 'xaizek/vim-inccomplete'
 Bundle 'davidhalter/jedi'
 Bundle 'davidhalter/jedi-vim'
 
+Bundle 'qstrahl/vim-matchmaker'
+
+
+
 filetype plugin indent on     " required!
 
 "airline
@@ -60,6 +64,9 @@ let g:NERDTreeWinPos = "right"
 "let g:nerdtree_tabs_open_on_console_startup = 1
 map <F2> :NERDTreeTabsToggle<CR>
 map <F3> :NERDTreeFind<CR>
+
+
+map <F4> :MatchmakerToggle<CR>
 
 
 " refresh all buffers
@@ -191,3 +198,6 @@ hi Comment       ctermfg=245
 hi SpellBad ctermbg=Red ctermfg=0
 hi PmenuSel ctermbg=0 cterm=reverse
 hi Search ctermbg=11 ctermfg=16
+
+
+hi default Matchmaker  ctermbg=9 ctermfg=16
