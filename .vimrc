@@ -46,7 +46,6 @@ Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
 Bundle 'xaizek/vim-inccomplete'
 
-Bundle 'davidhalter/jedi'
 Bundle 'davidhalter/jedi-vim'
 
 Bundle 'qstrahl/vim-matchmaker'
