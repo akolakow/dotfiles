@@ -76,6 +76,10 @@ map <F5> :checktime<CR>
 "set makeprg=/home/akolakow/work/prefix/native/bin/crosswaf\ build
 map <F6> :make<CR> :cw<CR>
 
+
+
+map <F7> :setlocal spell! spelllang=pl<CR>
+
 "clang format"
 map <F8> :ClangFormat<CR>
 let g:clang_format#style_options = {
@@ -199,4 +203,4 @@ hi PmenuSel ctermbg=0 cterm=reverse
 hi Search ctermbg=11 ctermfg=16
 
 
-hi default Matchmaker  ctermbg=9 ctermfg=16
+hi default Matchmaker  ctermbg=82 ctermfg=16
