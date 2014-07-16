@@ -143,10 +143,6 @@ nnoremap <c-o> <c-o>zz
 " set so=999
 " nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 
-" go to
-nnoremap <leader>] :YcmCompleter GoTo<CR>
-
-
 
 " clang complete
 let g:clang_auto_select=1
