@@ -10,12 +10,9 @@ set expandtab
 
 set t_Co=256
 
-
 set completeopt-=preview    "scratch disable
 
 set mouse=a
-
-
 
 set nocompatible              " be iMproved
 filetype off                  " required!
@@ -23,11 +20,11 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+
 Bundle 'gmarik/vundle'
 Bundle 'Rip-Rip/clang_complete'
-" Bundle 'Valloric/YouCompleteMe'
+Bundle 'lyuts/vim-rtags'
 Bundle 'scrooloose/nerdtree'
-Bundle 'molokai'
 Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kien/ctrlp.vim'
@@ -35,7 +32,6 @@ Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 Bundle 'tyok/nerdtree-ack'
 Bundle 'tpope/vim-sensible'
-Bundle 'vim-scripts/CSApprox'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdcommenter'
@@ -49,7 +45,6 @@ Bundle 'xaizek/vim-inccomplete'
 Bundle 'davidhalter/jedi-vim'
 
 Bundle 'qstrahl/vim-matchmaker'
-
 
 
 filetype plugin indent on     " required!
@@ -73,7 +68,6 @@ map <F5> :checktime<CR>
 
 
 " build shortcut
-"set makeprg=/home/akolakow/work/prefix/native/bin/crosswaf\ build
 map <F6> :make<CR> :cw<CR>
 
 
@@ -103,8 +97,7 @@ let g:clang_format#style_options = {
 "CtrlP
 let g:ctrlp_max_files = 20000
 
-"molokai
-colorscheme molokai
+colorscheme ron
 
 
 " easy buffer navigation
@@ -187,16 +180,5 @@ set colorcolumn=+1
 let g:jedi#auto_vim_configuration = 0
 
 set completeopt-=preview
-
-hi Visual                      ctermbg=0 cterm=reverse
-hi CursorLine                  ctermbg=236   cterm=none
-hi CursorLineNr                ctermfg=11   cterm=bold
-hi LineNr                ctermfg=241
-hi ColorColumn ctermbg=236 guibg=#FF0000
-hi Comment       ctermfg=245
-hi SpellBad ctermbg=Red ctermfg=0
-hi PmenuSel ctermbg=0 cterm=reverse
-hi Search ctermbg=11 ctermfg=16
-
 
 hi default Matchmaker  ctermbg=82 ctermfg=16
