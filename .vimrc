@@ -20,6 +20,8 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+set clipboard=unnamedplus
+
 
 Bundle 'gmarik/vundle'
 Bundle 'Rip-Rip/clang_complete'
@@ -95,7 +97,9 @@ let g:clang_format#style_options = {
     \ "Standard" : "Auto"}
 
 "CtrlP
-let g:ctrlp_max_files = 20000
+let g:ctrlp_max_files = 0
+let g:ctrlp_custom_ignore = 'build_.*\|build'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 
 colorscheme ron
 
