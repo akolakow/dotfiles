@@ -17,8 +17,8 @@ set mouse=a
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 set clipboard=unnamedplus
 
@@ -48,8 +48,8 @@ Bundle 'davidhalter/jedi-vim'
 
 Bundle 'qstrahl/vim-matchmaker'
 
-
-filetype plugin indent on     " required!
+call vundle#end()            " required!
+filetype plugin indent on    " required!
 
 "airline
 let g:airline_powerline_fonts = 0
