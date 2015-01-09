@@ -22,6 +22,8 @@ call vundle#begin()
 
 set clipboard=unnamedplus
 
+set list
+
 
 Bundle 'gmarik/vundle'
 Bundle 'Rip-Rip/clang_complete'
@@ -78,27 +80,10 @@ map <F7> :setlocal spell! spelllang=pl<CR>
 
 "clang format"
 map <F8> :ClangFormat<CR>
-let g:clang_format#style_options = {
-    \ "AccessModifierOffset" : -4,
-    \ "UseTab" : "Never",
-    \ "BreakBeforeBraces" : "Allman",
-    \ "AllowShortIfStatementsOnASingleLine" : "false",
-    \ "AlignEscapedNewlinesLeft" : "true",
-    \ "IndentCaseLabels" : "true",
-    \ "ColumnLimit" : 90,
-    \ "IndentWidth" : 4,
-    \ "NamespaceIndentation" : "None",
-    \ "MaxEmptyLinesToKeep" : 1,
-    \ "PointerBindsToType" : "true",
-    \ "SpaceAfterControlStatementKeyword" : "true",
-    \ "SpaceBeforeAssignmentOperators" : "true",
-    \ "SpaceInEmptyParentheses" : "false",
-    \ "SpacesInParentheses" : "false",
-    \ "Standard" : "Auto"}
 
 "CtrlP
 let g:ctrlp_max_files = 0
-let g:ctrlp_custom_ignore = 'build_.*\|build'
+"let g:ctrlp_custom_ignore = 'build_.*\|build'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 
 colorscheme ron
@@ -152,6 +137,12 @@ let g:clang_jumpto_back_key='<leader>['
 let g:clang_jumpto_declaration_key='<leader>]'
 let g:clang_library_path='/usr/lib/'
 set completeopt=longest,menuone
+let g:clang_auto_user_options='compile_commands.json'
+
+
+
+nmap <leader>rt :tab split<CR><leader>rj
+
 
 
  " syntastic
@@ -162,6 +153,9 @@ let g:syntastic_cpp_remove_include_errors=1
 let g:syntastic_cpp_config_file='.clang_complete'
 let g:syntastic_c_config_file='.clang_complete'
 let g:syntastic_enable_highlighting=0
+let g:syntastic_cpp_clang_check_post_args=''
+let g:syntastic_cpp_clang_tidy_post_args=''
+
 
 " ctrl-space autocompletion
 if has("gui_running")
@@ -186,3 +180,5 @@ let g:jedi#auto_vim_configuration = 0
 set completeopt-=preview
 
 hi default Matchmaker  ctermbg=82 ctermfg=16
+
+
