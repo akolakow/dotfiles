@@ -6,7 +6,9 @@ set hlsearch
 set smartindent
 set tabstop=4
 set shiftwidth=4
-set expandtab
+"set expandtab
+
+set noswapfile
 
 set t_Co=256
 
@@ -20,12 +22,12 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-set clipboard=unnamedplus
+set clipboard=unnamed
 
-set list
+"set list
 
 
-Bundle 'gmarik/vundle'
+Bundle 'gmarik/Vundle.vim'
 Bundle 'Rip-Rip/clang_complete'
 Bundle 'lyuts/vim-rtags'
 Bundle 'scrooloose/nerdtree'
@@ -49,13 +51,21 @@ Bundle 'xaizek/vim-inccomplete'
 Bundle 'davidhalter/jedi-vim'
 
 Bundle 'qstrahl/vim-matchmaker'
+Bundle 'aklt/plantuml-syntax'
+"Bundle 'godlygeek/csapprox'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'tomasr/molokai'
+Bundle 'morhetz/gruvbox'
+
+Bundle 'majutsushi/tagbar'
+Bundle 'hallison/vim-darkdevel'
 
 call vundle#end()            " required!
 filetype plugin indent on    " required!
 
 "airline
 let g:airline_powerline_fonts = 0
-let g:airline_theme='powerlineish'
+let g:airline_theme='gruvbox'
 
 "nerdtree
 let g:NERDTreeWinPos = "right"
@@ -81,13 +91,12 @@ map <F7> :setlocal spell! spelllang=pl<CR>
 "clang format"
 map <F8> :ClangFormat<CR>
 
+map <F9> :TagbarToggle<CR>
+
 "CtrlP
 let g:ctrlp_max_files = 0
-"let g:ctrlp_custom_ignore = 'build_.*\|build'
+let g:ctrlp_custom_ignore = 'build'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
-
-colorscheme ron
-
 
 " easy buffer navigation
 noremap <C-Left> <C-w>h
@@ -179,6 +188,8 @@ let g:jedi#auto_vim_configuration = 0
 
 set completeopt-=preview
 
-hi default Matchmaker  ctermbg=82 ctermfg=16
+"hi default Matchmaker  ctermbg=82 ctermfg=16
 
+colorscheme gruvbox
+set background=dark
 
