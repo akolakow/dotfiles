@@ -59,12 +59,15 @@ Bundle 'morhetz/gruvbox'
 
 Bundle 'majutsushi/tagbar'
 Bundle 'hallison/vim-darkdevel'
+Bundle 'alepez/vim-gtest'
+Bundle 'benmills/vimux'
+Bundle 'christoomey/vim-tmux-navigator'
 
 call vundle#end()            " required!
 filetype plugin indent on    " required!
 
 "airline
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 let g:airline_theme='gruvbox'
 
 "nerdtree
@@ -79,7 +82,6 @@ map <F4> :MatchmakerToggle<CR>
 
 " refresh all buffers
 map <F5> :checktime<CR>
-
 
 " build shortcut
 map <F6> :make<CR> :cw<CR>
@@ -99,10 +101,21 @@ let g:ctrlp_custom_ignore = 'build'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
 
 " easy buffer navigation
-noremap <C-Left> <C-w>h
-noremap <C-Down> <C-w>j
-noremap <C-Up> <C-w>k
-noremap <C-Right> <C-w>l
+"noremap <C-Left> <C-w>h
+"noremap <C-Down> <C-w>j
+"noremap <C-Up> <C-w>k
+"noremap <C-Right> <C-w>l
+
+set timeout timeoutlen=1000 ttimeoutlen=100
+set <F13>=[1;6D
+set <F14>=[1;6C
+map <F13> <C-S-Left>
+map! <F13> <C-S-Left>
+map <F14> <C-S-Right>
+map! <F14> <C-S-Right>
+
+map <C-S-Right> :tabn<cr>
+map <C-S-Left> :tabp<cr>
 
 
 "current line highlighted
@@ -136,21 +149,21 @@ nnoremap <c-o> <c-o>zz
 
 
 " clang complete
-let g:clang_auto_select=1
-let g:clang_complete_auto=1
-let g:clang_hl_errors=0
-let g:clang_complete_macros=1
-let g:clang_use_library=1
-let g:clang_user_options='|| exit 0'
-let g:clang_jumpto_back_key='<leader>['
-let g:clang_jumpto_declaration_key='<leader>]'
-let g:clang_library_path='/usr/lib/'
-set completeopt=longest,menuone
-let g:clang_auto_user_options='compile_commands.json'
+"let g:clang_auto_select=1
+"let g:clang_complete_auto=1
+"let g:clang_hl_errors=0
+"let g:clang_complete_macros=1
+"let g:clang_use_library=1
+"let g:clang_user_options='|| exit 0'
+"let g:clang_jumpto_back_key='<leader>['
+"let g:clang_jumpto_declaration_key='<leader>]'
+"let g:clang_library_path='/usr/lib/llvm-3.5/lib'
+"set completeopt=longest,menuone
+"let g:clang_auto_user_options='compile_commands.json'
 
 
 
-nmap <leader>rt :tab split<CR><leader>rj
+"nmap <leader>rt :tab split<CR><leader>rj
 
 
 
