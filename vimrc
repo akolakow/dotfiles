@@ -28,10 +28,8 @@ set clipboard=unnamed
 
 
 Bundle 'gmarik/Vundle.vim'
-Bundle 'Rip-Rip/clang_complete'
-Bundle 'lyuts/vim-rtags'
 Bundle 'scrooloose/nerdtree'
-Bundle 'octol/vim-cpp-enhanced-highlight'
+"Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
@@ -41,8 +39,7 @@ Bundle 'tpope/vim-sensible'
 Bundle 'bronson/vim-trailing-whitespace'
 Bundle 'bling/vim-airline'
 Bundle 'scrooloose/nerdcommenter'
-Bundle 'rhysd/vim-clang-format'
-Bundle 'scrooloose/syntastic'
+Bundle 'vim-syntastic/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'SirVer/ultisnips'
 Bundle 'honza/vim-snippets'
@@ -50,16 +47,12 @@ Bundle 'xaizek/vim-inccomplete'
 
 Bundle 'davidhalter/jedi-vim'
 
-Bundle 'qstrahl/vim-matchmaker'
 Bundle 'aklt/plantuml-syntax'
-"Bundle 'godlygeek/csapprox'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
 Bundle 'morhetz/gruvbox'
 
 Bundle 'majutsushi/tagbar'
-Bundle 'hallison/vim-darkdevel'
-Bundle 'alepez/vim-gtest'
 Bundle 'benmills/vimux'
 Bundle 'christoomey/vim-tmux-navigator'
 
@@ -67,7 +60,7 @@ call vundle#end()            " required!
 filetype plugin indent on    " required!
 
 "airline
-let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 0
 let g:airline_theme='gruvbox'
 
 "nerdtree
