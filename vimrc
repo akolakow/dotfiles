@@ -90,7 +90,11 @@ map <F8> :ClangFormat<CR>
 map <F9> :TagbarToggle<CR>
 
 "fzf
-set rtp+=~/.fzf
+if has('macunix')
+	set rtp+=/usr/local/opt/fzf
+else
+	set rtp+=~/.fzf
+endif
 noremap <C-P> :Files<CR>
 
 " easy buffer navigation
