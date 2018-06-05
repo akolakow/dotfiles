@@ -31,7 +31,6 @@ Bundle 'gmarik/Vundle.vim'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'octol/vim-cpp-enhanced-highlight'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'kien/ctrlp.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'rking/ag.vim'
 Bundle 'tyok/nerdtree-ack'
@@ -55,6 +54,8 @@ Bundle 'morhetz/gruvbox'
 Bundle 'majutsushi/tagbar'
 Bundle 'benmills/vimux'
 Bundle 'christoomey/vim-tmux-navigator'
+
+Plugin 'junegunn/fzf.vim'
 
 call vundle#end()            " required!
 filetype plugin indent on    " required!
@@ -88,10 +89,9 @@ map <F8> :ClangFormat<CR>
 
 map <F9> :TagbarToggle<CR>
 
-"CtrlP
-let g:ctrlp_max_files = 0
-let g:ctrlp_custom_ignore = 'build'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:10,results:50'
+"fzf
+set rtp+=~/.fzf
+noremap <C-P> :Files<CR>
 
 " easy buffer navigation
 "noremap <C-Left> <C-w>h
