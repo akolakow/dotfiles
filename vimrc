@@ -7,6 +7,8 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+set updatetime=100 "vimgutter update time is based on it
+
 set noswapfile
 
 set t_Co=256
