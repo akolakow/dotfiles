@@ -94,10 +94,10 @@ endif
 noremap <C-P> :Files<CR>
 
 " easy buffer navigation
-"noremap <C-Left> <C-w>h
-"noremap <C-Down> <C-w>j
-"noremap <C-Up> <C-w>k
-"noremap <C-Right> <C-w>l
+noremap <C-Left> <C-w>h
+noremap <C-Down> <C-w>j
+noremap <C-Up> <C-w>k
+noremap <C-Right> <C-w>l
 
 set timeout timeoutlen=1000 ttimeoutlen=100
 set <F13>=[1;6D
@@ -114,12 +114,14 @@ map <C-S-Left> :tabp<cr>
 set cursorline
 
 " line movements
-nnoremap <silent> <a-down> :m .+1<cr>==
-nnoremap <silent> <a-up> :m .-2<cr>==
-inoremap <silent> <a-down> <esc>:m .+1<cr>==gi
-inoremap <silent> <a-up> <esc>:m .-2<cr>==gi
-vnoremap <silent> <a-down> :m '>+1<cr>gv=gv
-vnoremap <silent> <a-up> :m '<-2<cr>gv=gv
+set <F15>=[1;3B "Alt down
+set <F16>=[1;3A "Alt up
+nnoremap <silent> <F15> :m .+1<CR>==
+nnoremap <silent> <F16> :m .-2<CR>==
+inoremap <silent> <F15> <ESC>:m .+1<CR>==gi
+inoremap <silent> <F16> <ESC>:m .-2<CR>==gi
+vnoremap <silent> <F15> :m '>+1<CR>gv=gv
+vnoremap <silent> <F16> :m '<-2<CR>gv=gv
 
 " keep search matches in the middle of the window.
 nnoremap n nzzzv
@@ -139,7 +141,6 @@ nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 
 set colorcolumn=+1
-set completeopt-=preview
 
 colorscheme gruvbox
 set background=dark
