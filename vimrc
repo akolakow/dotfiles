@@ -3,10 +3,9 @@ set wildmenu
 set number
 set hlsearch
 
-set smartindent
-set tabstop=4
-set shiftwidth=4
-"set expandtab
+set tabstop=2
+set shiftwidth=2
+set expandtab
 
 set noswapfile
 
@@ -16,46 +15,46 @@ set completeopt-=preview    "scratch disable
 
 set mouse=a
 
+set clipboard=unnamed
+
+"Vundle
 set nocompatible              " be iMproved
 filetype off                  " required!
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
-set clipboard=unnamed
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdtree'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+Plugin 'tyok/nerdtree-ack'
+Plugin 'tpope/vim-sensible'
+Plugin 'bronson/vim-trailing-whitespace'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'xaizek/vim-inccomplete'
 
-"set list
+Plugin 'davidhalter/jedi-vim'
 
+Plugin 'aklt/plantuml-syntax'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
 
-Bundle 'gmarik/Vundle.vim'
-Bundle 'scrooloose/nerdtree'
-"Bundle 'octol/vim-cpp-enhanced-highlight'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'mileszs/ack.vim'
-Bundle 'rking/ag.vim'
-Bundle 'tyok/nerdtree-ack'
-Bundle 'tpope/vim-sensible'
-Bundle 'bronson/vim-trailing-whitespace'
-Bundle 'bling/vim-airline'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'vim-syntastic/syntastic'
-Bundle 'tpope/vim-fugitive'
-Bundle 'SirVer/ultisnips'
-Bundle 'honza/vim-snippets'
-Bundle 'xaizek/vim-inccomplete'
-
-Bundle 'davidhalter/jedi-vim'
-
-Bundle 'aklt/plantuml-syntax'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'tomasr/molokai'
-Bundle 'morhetz/gruvbox'
-
-Bundle 'majutsushi/tagbar'
-Bundle 'benmills/vimux'
-Bundle 'christoomey/vim-tmux-navigator'
+Plugin 'majutsushi/tagbar'
+Plugin 'benmills/vimux'
+Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'junegunn/fzf.vim'
+Plugin 'kergoth/vim-bitbake'
 
 call vundle#end()            " required!
 filetype plugin indent on    " required!
@@ -70,17 +69,11 @@ let g:NERDTreeWinPos = "right"
 map <F2> :NERDTreeTabsToggle<CR>
 map <F3> :NERDTreeFind<CR>
 
-
-map <F4> :MatchmakerToggle<CR>
-
-
 " refresh all buffers
 map <F5> :checktime<CR>
 
 " build shortcut
 map <F6> :make<CR> :cw<CR>
-
-
 
 map <F7> :setlocal spell! spelllang=pl<CR>
 
@@ -114,11 +107,8 @@ map! <F14> <C-S-Right>
 map <C-S-Right> :tabn<cr>
 map <C-S-Left> :tabp<cr>
 
-
 "current line highlighted
 set cursorline
-
-
 
 " line movements
 nnoremap <silent> <a-down> :m .+1<cr>==
@@ -137,67 +127,16 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
-
-
-
-" center cursor
-" set so=999
-" nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
-
-
-" clang complete
-"let g:clang_auto_select=1
-"let g:clang_complete_auto=1
-"let g:clang_hl_errors=0
-"let g:clang_complete_macros=1
-"let g:clang_use_library=1
-"let g:clang_user_options='|| exit 0'
-"let g:clang_jumpto_back_key='<leader>['
-"let g:clang_jumpto_declaration_key='<leader>]'
-"let g:clang_library_path='/usr/lib/llvm-3.5/lib'
-"set completeopt=longest,menuone
-"let g:clang_auto_user_options='compile_commands.json'
-
-
-
-"nmap <leader>rt :tab split<CR><leader>rj
-
-
-
- " syntastic
-let g:syntastic_cpp_compiler='clang++'
-let g:syntastic_cpp_compiler_options=' -std=c++11'
-let g:syntastic_cpp_check_header=1
-let g:syntastic_cpp_remove_include_errors=1
-let g:syntastic_cpp_config_file='.clang_complete'
-let g:syntastic_c_config_file='.clang_complete'
-let g:syntastic_enable_highlighting=0
-let g:syntastic_cpp_clang_check_post_args=''
-let g:syntastic_cpp_clang_tidy_post_args=''
-
-
-" ctrl-space autocompletion
-if has("gui_running")
-    " c-space seems to work under gVim on both Linux and win32
-    inoremap <c-space> <c-x><c-u>
-else " no gui
-  if has("unix")
-    inoremap <nul> <c-x><c-u>
-  else
-  " no idea of the name of ctrl-space elsewhere
-  endif
-endif
+"YouCompleteMe
+nnoremap <leader>f :YcmCompleter FixIt<CR>
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
+nnoremap <leader>gt :YcmCompleter GetType<CR>
 
 set colorcolumn=+1
-
-
-
-" pyjedi
-let g:jedi#auto_vim_configuration = 0
-
 set completeopt-=preview
-
-"hi default Matchmaker  ctermbg=82 ctermfg=16
 
 colorscheme gruvbox
 set background=dark
