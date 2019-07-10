@@ -28,6 +28,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'lyuts/vim-rtags'
 Plugin 'scrooloose/nerdtree'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'jistr/vim-nerdtree-tabs'
@@ -59,6 +60,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'junegunn/fzf.vim'
 Plugin 'kergoth/vim-bitbake'
 
+Plugin 'vim-scripts/a.vim'
+
 call vundle#end()            " required!
 filetype plugin indent on    " required!
 
@@ -71,6 +74,9 @@ let g:NERDTreeWinPos = "right"
 "let g:nerdtree_tabs_open_on_console_startup = 1
 map <F2> :NERDTreeTabsToggle<CR>
 map <F3> :NERDTreeFind<CR>
+
+" switch source/header a.vim
+map <F4> :A<CR>
 
 " refresh all buffers
 map <F5> :checktime<CR>
