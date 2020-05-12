@@ -27,9 +27,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 Plugin 'lyuts/vim-rtags'
-Plugin 'scrooloose/nerdtree'
+Plugin 'preservim/nerdtree'
 Plugin 'octol/vim-cpp-enhanced-highlight'
 Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'mileszs/ack.vim'
@@ -38,7 +38,7 @@ Plugin 'tyok/nerdtree-ack'
 Plugin 'tpope/vim-sensible'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'bling/vim-airline'
-Plugin 'scrooloose/nerdcommenter'
+Plugin 'preservim/nerdcommenter'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
@@ -71,6 +71,12 @@ let g:airline_theme='gruvbox'
 
 "nerdtree
 let g:NERDTreeWinPos = "right"
+
+"ycm
+" Let clangd fully control code completion
+let g:ycm_clangd_uses_ycmd_caching = 0
+let g:ycm_clangd_args = ['-log=verbose', '-pretty']
+
 "let g:nerdtree_tabs_open_on_console_startup = 1
 map <F2> :NERDTreeTabsToggle<CR>
 map <F3> :NERDTreeFind<CR>
@@ -141,6 +147,7 @@ nnoremap <c-o> <c-o>zz
 "YouCompleteMe
 nnoremap <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
