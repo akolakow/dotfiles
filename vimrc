@@ -57,7 +57,7 @@ Plugin 'majutsushi/tagbar'
 Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
 
-Plugin 'junegunn/fzf.vim'
+Plugin 'junegunn/fzf'
 Plugin 'kergoth/vim-bitbake'
 
 Plugin 'vim-scripts/a.vim'
@@ -99,11 +99,11 @@ map <F9> :TagbarToggle<CR>
 
 "fzf
 if has('macunix')
-	set rtp+=/usr/local/opt/fzf
+	set rtp+=/usr/local/bin/fzf
 else
 	set rtp+=~/.fzf
 endif
-noremap <C-P> :Files<CR>
+noremap <C-P> :FZF<CR>
 
 " easy buffer navigation
 noremap <C-Left> <C-w>h
