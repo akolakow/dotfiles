@@ -42,8 +42,6 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
 Plugin 'xaizek/vim-inccomplete'
 
 Plugin 'davidhalter/jedi-vim'
@@ -62,6 +60,13 @@ Plugin 'kergoth/vim-bitbake'
 
 Plugin 'vim-scripts/a.vim'
 
+Plugin 'plasticboy/vim-markdown'
+Plugin 'elzr/vim-json'
+Plugin 'chr4/nginx.vim'
+Plugin 'fatih/vim-go'
+Plugin 'isobit/vim-caddyfile'
+Plugin 'MTDL9/vim-log-highlighting'
+
 call vundle#end()            " required!
 filetype plugin indent on    " required!
 
@@ -76,6 +81,7 @@ let g:NERDTreeWinPos = "right"
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_args = ['-log=verbose', '-pretty']
+let g:ycm_auto_hover=''
 
 "let g:nerdtree_tabs_open_on_console_startup = 1
 map <F2> :NERDTreeTabsToggle<CR>
@@ -147,14 +153,26 @@ nnoremap <c-o> <c-o>zz
 "YouCompleteMe
 nnoremap <leader>f :YcmCompleter FixIt<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap <C-LeftMouse> <LeftMouse>:YcmCompleter GoTo<CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
+nnoremap <leader>gh :YcmCompleter RefactorRename 
+nmap <leader>h <plug>(YCMHover)
+
+"vim-json
+setlocal foldmethod=syntax
+au FileType json setlocal equalprg=json_pp
 
 set colorcolumn=+1
 
 colorscheme gruvbox
 set background=dark
 
+
+"json
+nnoremap <leader>j :%!jq .<CR> :set syntax=json<CR>
+
+set foldlevelstart=9999
