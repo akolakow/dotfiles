@@ -98,12 +98,12 @@ map <F8> :ClangFormat<CR>
 map <F9> :TagbarToggle<CR>
 
 "fzf
-if has('macunix')
-	set rtp+=/usr/local/bin/fzf
-else
-	set rtp+=~/.fzf
-endif
-noremap <C-P> :FZF<CR>
+"if has('macunix')
+  "set rtp+=/usr/local/bin/fzf
+"else
+  "set rtp+=~/.fzf
+"endif
+noremap <C-P> :Files<CR>
 
 " easy buffer navigation
 noremap <C-Left> <C-w>h
@@ -112,12 +112,6 @@ noremap <C-Up> <C-w>k
 noremap <C-Right> <C-w>l
 
 set timeout timeoutlen=1000 ttimeoutlen=100
-set <F13>=[1;6D
-set <F14>=[1;6C
-map <F13> <C-S-Left>
-map! <F13> <C-S-Left>
-map <F14> <C-S-Right>
-map! <F14> <C-S-Right>
 
 map <C-S-Right> :tabn<cr>
 map <C-S-Left> :tabp<cr>
