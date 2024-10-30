@@ -28,13 +28,8 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'lyuts/vim-rtags'
 Plugin 'preservim/nerdtree'
 Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'mileszs/ack.vim'
-Plugin 'rking/ag.vim'
-Plugin 'tyok/nerdtree-ack'
 Plugin 'tpope/vim-sensible'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'bling/vim-airline'
@@ -42,9 +37,7 @@ Plugin 'preservim/nerdcommenter'
 Plugin 'vim-syntastic/syntastic'
 Plugin 'tpope/vim-fugitive'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'xaizek/vim-inccomplete'
 
-Plugin 'davidhalter/jedi-vim'
 
 Plugin 'aklt/plantuml-syntax'
 Plugin 'nanotech/jellybeans.vim'
