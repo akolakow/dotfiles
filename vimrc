@@ -49,6 +49,7 @@ Plugin 'benmills/vimux'
 Plugin 'christoomey/vim-tmux-navigator'
 
 Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
 Plugin 'kergoth/vim-bitbake'
 
 Plugin 'vim-scripts/a.vim'
