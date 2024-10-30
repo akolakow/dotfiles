@@ -78,7 +78,7 @@ let g:ycm_clangd_args = ['-log=verbose', '-pretty']
 let g:ycm_auto_hover=''
 
 "let g:nerdtree_tabs_open_on_console_startup = 1
-map <F2> :NERDTreeTabsToggle<CR>
+map <F2> :NERDTreeToggle<CR>
 map <F3> :NERDTreeFind<CR>
 
 " switch source/header a.vim
