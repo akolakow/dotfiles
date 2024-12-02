@@ -23,45 +23,51 @@ set clipboard=unnamed
 set nocompatible              " be iMproved
 filetype off                  " required!
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+call plug#begin()
 
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'ycm-core/YouCompleteMe'
-Plugin 'preservim/nerdtree'
-Plugin 'octol/vim-cpp-enhanced-highlight'
-Plugin 'tpope/vim-sensible'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'bling/vim-airline'
-Plugin 'preservim/nerdcommenter'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'airblade/vim-gitgutter'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'preservim/nerdtree'
+Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-unimpaired'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'bling/vim-airline'
+Plug 'preservim/nerdcommenter'
+Plug 'vim-syntastic/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 
-Plugin 'aklt/plantuml-syntax'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'tomasr/molokai'
-Plugin 'morhetz/gruvbox'
+Plug 'aklt/plantuml-syntax'
+Plug 'nanotech/jellybeans.vim'
+Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
 
-Plugin 'majutsushi/tagbar'
-Plugin 'benmills/vimux'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'majutsushi/tagbar'
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
 
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
-Plugin 'kergoth/vim-bitbake'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'kergoth/vim-bitbake'
 
-Plugin 'vim-scripts/a.vim'
+Plug 'vim-scripts/a.vim'
 
-Plugin 'plasticboy/vim-markdown'
-Plugin 'elzr/vim-json'
-Plugin 'chr4/nginx.vim'
-Plugin 'fatih/vim-go'
-Plugin 'isobit/vim-caddyfile'
-Plugin 'MTDL9/vim-log-highlighting'
+Plug 'plasticboy/vim-markdown'
+Plug 'elzr/vim-json'
+Plug 'chr4/nginx.vim'
+Plug 'fatih/vim-go'
+Plug 'isobit/vim-caddyfile'
+Plug 'MTDL9/vim-log-highlighting'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
-call vundle#end()            " required!
+call plug#end()            " required!
 filetype plugin indent on    " required!
 
 "airline
@@ -72,6 +78,7 @@ let g:airline_theme='gruvbox'
 let g:NERDTreeWinPos = "right"
 
 "ycm
+let g:ycm_key_list_stop_completion = ['<C-y>', '<CR>']
 " Let clangd fully control code completion
 let g:ycm_clangd_uses_ycmd_caching = 0
 let g:ycm_clangd_args = ['-log=verbose', '-pretty']
@@ -140,6 +147,7 @@ nnoremap <c-o> <c-o>zz
 
 "YouCompleteMe
 nnoremap <leader>f :YcmCompleter FixIt<CR>
+nnoremap <silent> <leader>rn <cmd>execute 'YcmCompleter RefactorRename' input( 'Rename to: ' )<CR>
 nnoremap <leader>g :YcmCompleter GoTo<CR>
 nnoremap <C-LeftMouse> <LeftMouse>:YcmCompleter GoTo<CR>
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
@@ -148,6 +156,8 @@ nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
 nnoremap <leader>gh :YcmCompleter RefactorRename 
+nmap <leader>ss <Plug>(YCMFindSymbolInWorkspace)
+nmap <leader>bt <Plug>(YCMCallHierarchy)
 nmap <leader>h <plug>(YCMHover)
 
 "vim-json
@@ -164,3 +174,15 @@ set background=dark
 nnoremap <leader>j :%!jq .<CR> :set syntax=json<CR>
 
 set foldlevelstart=9999
+
+
+" Trigger configuration. You need to change this to something other than <tab> if you use one of the following:
+" - https://github.com/Valloric/YouCompleteMe
+" - https://github.com/nvim-lua/completion-nvim
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-l>"
+let g:UltiSnipsJumpBackwardTrigger="<c-h>"
+
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
