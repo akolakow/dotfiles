@@ -70,6 +70,9 @@ Plug 'honza/vim-snippets'
 call plug#end()            " required!
 filetype plugin indent on    " required!
 
+let mapleader=" "
+nnoremap <SPACE> <Nop>
+
 "airline
 let g:airline_powerline_fonts = 0
 let g:airline_theme='gruvbox'
@@ -100,7 +103,7 @@ map <F6> :make<CR> :cw<CR>
 map <F7> :setlocal spell! spelllang=pl<CR>
 
 "clang format"
-map <F8> :ClangFormat<CR>
+map <F8> :YcmCompleter Format<CR>
 
 map <F9> :TagbarToggle<CR>
 
@@ -111,6 +114,8 @@ map <F9> :TagbarToggle<CR>
   "set rtp+=~/.fzf
 "endif
 noremap <C-P> :Files<CR>
+nnoremap <leader><leader> :Files<CR>
+nnoremap <leader>/ :RG<CR>
 
 " easy buffer navigation
 noremap <C-Left> <C-w>h
@@ -148,14 +153,18 @@ nnoremap <c-o> <c-o>zz
 "YouCompleteMe
 nnoremap <leader>f :YcmCompleter FixIt<CR>
 nnoremap <silent> <leader>rn <cmd>execute 'YcmCompleter RefactorRename' input( 'Rename to: ' )<CR>
+"old one
 nnoremap <leader>g :YcmCompleter GoTo<CR>
+nnoremap gd :YcmCompleter GoTo<CR>
 nnoremap <C-LeftMouse> <LeftMouse>:YcmCompleter GoTo<CR>
+"old one
 nnoremap <leader>gr :YcmCompleter GoToReferences<CR>
-nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+nnoremap gr :YcmCompleter GoToReferences<CR>
 nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
 nnoremap <leader>gi :YcmCompleter GoToInclude<CR>
 nnoremap <leader>gt :YcmCompleter GetType<CR>
-nnoremap <leader>gh :YcmCompleter RefactorRename 
+nnoremap <leader>gh :YcmCompleter RefactorRename
+nnoremap <leader>gd :YcmDiags<CR>
 nmap <leader>ss <Plug>(YCMFindSymbolInWorkspace)
 nmap <leader>bt <Plug>(YCMCallHierarchy)
 nmap <leader>h <plug>(YCMHover)
