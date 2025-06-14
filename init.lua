@@ -263,8 +263,14 @@ require("lazy").setup({
         { "<c-right>", "<cmd>TmuxNavigateRight<cr>" },
         { "<c-\\>",    "<cmd>TmuxNavigatePrevious<cr>" },
       },
-    }
-
+    },
+    {
+      "vim-airline/vim-airline",
+      dependencies = { "vim-airline/vim-airline-themes" },
+      config = function()
+        vim.cmd([[let g:airline_theme='base16_gruvbox_dark_soft']])
+      end,
+    },
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -287,6 +293,8 @@ vim.api.nvim_set_keymap('n', '<leader>gb', '<cmd>Gitsigns blame<CR>', { noremap 
 vim.api.nvim_set_keymap('n', '<leader>ghp', '<cmd>Gitsigns preview_hunk<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>ghr', '<cmd>Gitsigns reset_hunk<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gd', '<cmd>Gitsigns diffthis HEAD<CR>', { noremap = true })
+
+vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>Lazy<CR>', { noremap = true })
 
 vim.wo.number = true
 
