@@ -37,13 +37,13 @@
 
 (deflayer leada
     tab     q    w    e    r    t    y    -    =    [    ]   
-    esc     a    s     d   @sft_f    g    left    down    up    right   bspc 
+    esc     @leada @alt_s    @ctl_d   @sft_f    g    left    down    up    right   bspc 
     lsft    z    x    c    v    b    9    0    ,    .    /
 )
 
 (deflayer lead;
     tab     .    7    8    9    t    y    u    i    o    p   
-    esc     0    4    5    6    g    h    j    k    l    ;
+    esc     0    4    5    6    g    h    @sft_j   @ctl_k   @alt_l   @lead;
     lsft    z    1    2    3    b    n    m    ,    .    /
 )
 
