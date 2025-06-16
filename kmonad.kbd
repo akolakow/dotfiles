@@ -1,0 +1,53 @@
+(defcfg
+  ;; For Linux
+  input  (device-file "/dev/input/by-path/platform-i8042-serio-0-event-kbd")
+  output (uinput-sink "My KMonad output")
+
+  ;; This option tells KMonad to let non-configured keys act normal
+  fallthrough true
+)
+
+(defsrc
+    tab     q    w    e    r    t    y    u    i    o    p   
+    caps    a    s    d    f    g    h    j    k    l    ;
+    lsft    z    x    c    v    b    n    m    ,    .    /
+)
+
+(defalias
+    met_a (tap-hold-next-release 200 a lmet)
+    alt_s (tap-hold-next-release 200 s ralt)
+    ctl_d (tap-hold-next-release 200 d lctl)
+    sft_f (tap-hold-next-release 200 f lsft)
+
+    sft_j (tap-hold-next-release 200 j rsft)
+    ctl_k (tap-hold-next-release 200 k rctl)
+    alt_l (tap-hold-next-release 200 l ralt)
+    met_; (tap-hold-next-release 200 ; rmet)
+
+    leada (tap-hold-next-release 200 a (layer-toggle leada))
+
+    lead; (tap-hold-next-release 200 ; (layer-toggle lead;))
+)
+
+(deflayer homerowmods
+    tab     q    w    e    r    t    y    u    i    o    p   
+    esc   @leada @alt_s    @ctl_d   @sft_f   g   h   @sft_j   @ctl_k   @alt_l   @lead;
+    lsft    z    x    c    v    b    n    m    ,    .    /
+)
+
+(deflayer leada
+    tab     q    w    e    r    t    y    -    =    [    ]   
+    esc     a    s     d   @sft_f    g    left    down    up    right   bspc 
+    lsft    z    x    c    v    b    9    0    ,    .    /
+)
+
+(deflayer lead;
+    tab     .    7    8    9    t    y    u    i    o    p   
+    esc     0    4    5    6    g    h    j    k    l    ;
+    lsft    z    1    2    3    b    n    m    ,    .    /
+)
+
+
+
+
+
