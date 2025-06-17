@@ -272,180 +272,8 @@ require("lazy").setup({
       end,
     },
     {
-      "nvim-treesitter/nvim-treesitter-textobjects",
-      lazy = false,
-      enabled = true,
-      config = function()
-        textobjectss = {
-              swap = {
-                enable = true,
-                swap_next = {
-                  ["<leader>a"] = "@parameter.inner",
-                },
-                swap_previous = {
-                  ["<leader>A"] = "@parameter.inner",
-                },
-              },
-              select = {
-                enable = true,
-
-                -- Automatically jump forward to textobj, similar to targets.vim
-                lookahead = true,
-
-                keymaps = {
-                  -- You can use the capture groups defined in textobjects.scm
-                  ["af"] = "@function.outer",
-                  ["if"] = "@function.inner",
-                  ["ac"] = "@class.outer",
-                  -- You can optionally set descriptions to the mappings (used in the desc parameter of
-                  -- nvim_buf_set_keymap) which plugins like which-key display
-                  ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-                  -- You can also use captures from other query groups like `locals.scm`
-                  ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-                },
-                -- You can choose the select mode (default is charwise 'v')
-                --
-                -- Can also be a function which gets passed a table with the keys
-                -- * query_string: eg '@function.inner'
-                -- * method: eg 'v' or 'o'
-                -- and should return the mode ('v', 'V', or '<c-v>') or a table
-                -- mapping query_strings to modes.
-                selection_modes = {
-                  ['@parameter.outer'] = 'v', -- charwise
-                  ['@function.outer'] = 'V',  -- linewise
-                  ['@class.outer'] = '<c-v>', -- blockwise
-                },
-                -- If you set this to `true` (default is `false`) then any textobject is
-                -- extended to include preceding or succeeding whitespace. Succeeding
-                -- whitespace has priority in order to act similarly to eg the built-in
-                -- `ap`.
-                --
-                -- Can also be a function which gets passed a table with the keys
-                -- * query_string: eg '@function.inner'
-                -- * selection_mode: eg 'v'
-                -- and should return true or false
-                include_surrounding_whitespace = true,
-              },
-              move = {
-                enable = true,
-                set_jumps = true, -- whether to set jumps in the jumplist
-                goto_next_start = {
-                  ["]m"] = "@function.outer",
-                  ["]]"] = { query = "@class.outer", desc = "Next class start" },
-                },
-                goto_next_end = {
-                  ["]M"] = "@function.outer",
-                  ["]["] = "@class.outer",
-                },
-                goto_previous_start = {
-                  ["[m"] = "@function.outer",
-                  ["[["] = "@class.outer",
-                },
-                goto_previous_end = {
-                  ["[M"] = "@function.outer",
-                  ["[]"] = "@class.outer",
-                },
-                -- Below will go to either the start or the end, whichever is closer.
-                -- Use if you want more granular movements
-                -- Make it even more gradual by adding multiple queries and regex.
-                -- goto_next = {
-                --   ["]d"] = "@conditional.outer",
-                -- },
-                -- goto_previous = {
-                --   ["[d"] = "@conditional.outer",
-                -- }
-              },
-            },
-            -- If treesitter is already loaded, we need to run config again for textobjects
-
-            require("nvim-treesitter.configs").setup({ textobjects = textobjectss })
-      end
-    },
-    {
       "nvim-treesitter/nvim-treesitter",
       build = ":TSUpdate",
-      opts = {
-        textobjects = {
-          swap = {
-            enable = true,
-            swap_next = {
-              ["<leader>a"] = "@parameter.inner",
-            },
-            swap_previous = {
-              ["<leader>A"] = "@parameter.inner",
-            },
-          },
-          select = {
-            enable = true,
-
-            -- Automatically jump forward to textobj, similar to targets.vim
-            lookahead = true,
-
-            keymaps = {
-              -- You can use the capture groups defined in textobjects.scm
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              -- You can optionally set descriptions to the mappings (used in the desc parameter of
-              -- nvim_buf_set_keymap) which plugins like which-key display
-              ["ic"] = { query = "@class.inner", desc = "Select inner part of a class region" },
-              -- You can also use captures from other query groups like `locals.scm`
-              ["as"] = { query = "@local.scope", query_group = "locals", desc = "Select language scope" },
-            },
-            -- You can choose the select mode (default is charwise 'v')
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * method: eg 'v' or 'o'
-            -- and should return the mode ('v', 'V', or '<c-v>') or a table
-            -- mapping query_strings to modes.
-            selection_modes = {
-              ['@parameter.outer'] = 'v', -- charwise
-              ['@function.outer'] = 'V',  -- linewise
-              ['@class.outer'] = '<c-v>', -- blockwise
-            },
-            -- If you set this to `true` (default is `false`) then any textobject is
-            -- extended to include preceding or succeeding whitespace. Succeeding
-            -- whitespace has priority in order to act similarly to eg the built-in
-            -- `ap`.
-            --
-            -- Can also be a function which gets passed a table with the keys
-            -- * query_string: eg '@function.inner'
-            -- * selection_mode: eg 'v'
-            -- and should return true or false
-            include_surrounding_whitespace = true,
-          },
-          move = {
-            enable = true,
-            set_jumps = true, -- whether to set jumps in the jumplist
-            goto_next_start = {
-              ["]m"] = "@function.outer",
-              ["]]"] = { query = "@class.outer", desc = "Next class start" },
-            },
-            goto_next_end = {
-              ["]M"] = "@function.outer",
-              ["]["] = "@class.outer",
-            },
-            goto_previous_start = {
-              ["[m"] = "@function.outer",
-              ["[["] = "@class.outer",
-            },
-            goto_previous_end = {
-              ["[M"] = "@function.outer",
-              ["[]"] = "@class.outer",
-            },
-            -- Below will go to either the start or the end, whichever is closer.
-            -- Use if you want more granular movements
-            -- Make it even more gradual by adding multiple queries and regex.
-            -- goto_next = {
-            --   ["]d"] = "@conditional.outer",
-            -- },
-            -- goto_previous = {
-            --   ["[d"] = "@conditional.outer",
-            -- }
-          },
-        },
-      },
     },
     { "knsh14/vim-github-link" },
     {
@@ -481,6 +309,7 @@ require("lazy").setup({
       dependencies = { "nvim-lua/plenary.nvim" }
     },
     { 'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons' },
+    {"mbbill/undotree"},
   },
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
@@ -510,12 +339,34 @@ vim.api.nvim_set_keymap('n', '<leader>l', '<cmd>Lazy<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>gl', '<cmd>GetCurrentBranchLink<CR>', { noremap = true })
 
 
-vim.wo.number = true
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
-vim.o.expandtab = true
-vim.o.smartindent = true
-vim.o.tabstop = 2
-vim.o.shiftwidth = 2
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+vim.opt.smartindent = true
+
+vim.opt.wrap = false
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+
+vim.opt.termguicolors = true
+
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+
+vim.opt.updatetime = 50
+
+vim.opt.colorcolumn = "80"
 
 vim.api.nvim_set_option("clipboard", "unnamed")
 
@@ -534,6 +385,19 @@ vim.keymap.set("n", "<C-k>", function() harpoon:list():select(2) end)
 vim.keymap.set("n", "<C-l>", function() harpoon:list():select(3) end)
 vim.keymap.set("n", "<C-;>", function() harpoon:list():select(4) end)
 
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set("n", "<C-d>", "<C-d>zz")
+vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
+
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+vim.keymap.set("n", "Q", "<nop>")
+
 -- Toggle previous & next buffers stored within Harpoon list
 -- vim.keymap.set("n", "<C-S-J>", function() harpoon:list():prev() end)
 -- vim.keymap.set("n", "<C-S-K>", function() harpoon:list():next() end)
@@ -547,3 +411,5 @@ vim.api.nvim_set_keymap('n', '<C-S-Down>', '<cmd>BufferLineCyclePrev<CR>', { nor
 vim.api.nvim_set_keymap('n', '<C-S-Up>', '<cmd>BufferLineCycleNex<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>bo', '<cmd>BufferLineCloseOthers<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>bd', '<cmd>bd<CR>', { noremap = true })
+
+
