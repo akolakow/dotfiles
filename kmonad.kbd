@@ -23,6 +23,7 @@
     ctl_k (tap-hold-next-release 200 k rctl)
     alt_l (tap-hold-next-release 200 l ralt)
     met_; (tap-hold-next-release 200 ; rmet)
+    met_n (tap-hold-next-release 200 n rmet)
 
     leada (tap-hold-next-release 200 a (layer-toggle leada))
 
@@ -30,9 +31,9 @@
 )
 
 (deflayer homerowmods
-    tab     q    w    e    r    t    y    u    i    o    p   
-    esc   @leada @alt_s    @ctl_d   @sft_f   g   h   @sft_j   @ctl_k   @alt_l   @lead;
-    lsft    z    x    c    v    b    n    m    ,    .    /
+    tab     q    w    e    r    t    y        u    i    o    p   
+    esc   @leada @alt_s    @ctl_d    @sft_f   g   h   @sft_j   @ctl_k   @alt_l   @lead;
+    lsft    z    x    c    v    b    @met_n    m    ,    .    /
 )
 
 (deflayer leada
