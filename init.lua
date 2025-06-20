@@ -1,1 +1,1 @@
-init_full.lua
+require("akola")
