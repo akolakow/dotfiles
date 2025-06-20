@@ -8,44 +8,52 @@
 )
 
 (defsrc
-    tab     q    w    e    r    t    y    u    i    o    p   
-    caps    a    s    d    f    g    h    j    k    l    ;
-    lsft    z    x    c    v    b    n    m    ,    .    /
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =    bspc
+  tab  q    w    e    r    t    y    u    i    o    p   
+  caps a    s    d    f    g    h    j    k    l    ;
+  lsft z    x    c    v    b    n    m    ,    .    /
 )
 
 (defalias
-    met_a (tap-hold-next-release 200 a lmet)
-    alt_s (tap-hold-next-release 200 s ralt)
-    ctl_d (tap-hold-next-release 200 d lctl)
-    sft_f (tap-hold-next-release 200 f lsft)
+    meta (tap-hold-next-release 200 a lmet)
+    alts (tap-hold-next-release 200 s ralt)
+    ctld (tap-hold-next-release 200 d lctl)
+    sftf (tap-hold-next-release 200 f lsft)
 
-    sft_j (tap-hold-next-release 200 j rsft)
-    ctl_k (tap-hold-next-release 200 k rctl)
-    alt_l (tap-hold-next-release 200 l ralt)
-    met_; (tap-hold-next-release 200 ; rmet)
-    met_n (tap-hold-next-release 200 n rmet)
+    sftj (tap-hold-next-release 200 j rsft)
+    ctlk (tap-hold-next-release 200 k rctl)
+    altl (tap-hold-next-release 200 l ralt)
+    met; (tap-hold-next-release 200 ; rmet)
+    metn (tap-hold-next-release 200 n rmet)
 
-    leada (tap-hold-next-release 200 a (layer-toggle leada))
+    ldra (tap-hold-next-release 200 a (layer-toggle ldra))
 
-    lead; (tap-hold-next-release 200 ; (layer-toggle lead;))
+    ldr; (tap-hold-next-release 200 ; (layer-toggle ldr;))
 )
 
 (deflayer homerowmods
-    tab     q    w    e    r    t    y        u    i    o    p   
-    esc   @leada @alt_s    @ctl_d    @sft_f   g   h   @sft_j   @ctl_k   @alt_l   @lead;
-    lsft    z    x    c    v    b    @met_n    m    ,    .    /
+  esc  f1    f2    f3    f4    f5    f6    f7    f8    f9    f10  f11  f12
+  grv  1     2     3     4     5     6     7     8     9     0    -    =    bspc
+  tab  q     w     e     r     t     y     u     i     o     p   
+  esc  @ldra @alts @ctld @sftf g     h     @sftj @ctlk @altl @ldr;
+  lsft z     x     c     v     b     @metn m     ,     .      /
 )
 
-(deflayer leada
-    tab     q    w    e    r    t    y    -    =    [    ]   
-    esc     @leada @alt_s    @ctl_d   @sft_f    g    left    down    up    right   bspc 
-    lsft    z    x    c    v    b    9    0    ,    .    /
+(deflayer ldra
+    _     brdn  brup  lp    mctl  bldn  blup  prev  pp    next  mute  vold  volu
+    _     _     _     _     _     _     _     _     _     _     _     _     _     _
+    tab   q     w     e     r     t     y     -     =     [     ]   
+    esc   @ldra @alts @ctld @sftf g     left  down  up    right bspc 
+    lsft  z     x     c     v     b     9     0     ,     .     /
 )
 
-(deflayer lead;
-    tab     .    7    8    9    t    y    u    i    o    p   
-    esc     0    4    5    6    g    h    @sft_j   @ctl_k   @alt_l   @lead;
-    lsft    z    1    2    3    b    n    m    ,    .    /
+(deflayer ldr;
+    _     brdn  brup  lp    mctl  bldn  blup  prev  pp    next  mute  vold  volu
+    _     _     _     _     _     _     _     _     _     _     _     _     _     _
+    tab   .     7     8     9     t     y     u     i     o     p   
+    esc   0     4     5     6     g     h     @sftj @ctlk @altl @ldr;
+    lsft  z     1     2     3     b     n     m     ,     .     /
 )
 
 
