@@ -45,12 +45,13 @@ return {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         lazy = false,
-        opts = {
+        config = function ()
+            require'nvim-treesitter.configs'.setup {
             -- A list of parser names, or "all"
-            ensure_installed = { "help", "javascript", "typescript", "c", "cpp", "python", "lua", "rust" },
+            ensure_installed = { "vimdoc", "javascript", "typescript", "c", "cpp", "python", "lua", "rust" },
 
             -- Install parsers synchronously (only applied to `ensure_installed`)
-            -- sync_install = false,
+            sync_install = false,
 
             -- Automatically install missing parsers when entering buffer
             -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
@@ -66,11 +67,33 @@ return {
                 -- Instead of true it can also be a list of languages
                 additional_vim_regex_highlighting = false,
             },
-        },
+		}
+        end
     },
-    { "nvim-treesitter/nvim-treesitter-context",
-        config = function ()
+    {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
             vim.keymap.set('n', '<leader>cc', '<cmd>TSContext toggle<CR>', { noremap = true })
+        end
+    },
+    {
+        "nvim-treesitter/playground",
+        lazy = false,
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-refactor",
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
+                refactor = {
+                    highlight_definitions = {
+                        enable = true,
+                        -- Set to false if you have an `updatetime` of ~100.
+                        clear_on_cursor_move = true,
+                    },
+                },
+            }
         end
     },
     {
