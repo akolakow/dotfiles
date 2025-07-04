@@ -3,12 +3,14 @@ return {
     { "ThePrimeagen/refactoring.nvim" },
     {
         "ggandor/flit.nvim",
+        enabled = false,
         config = function()
             require("flit").setup()
         end
     },
     {
         "ggandor/leap.nvim",
+        enabled = false,
         config = function(_, opts)
             local leap = require("leap")
             leap.set_default_mappings()
@@ -21,6 +23,9 @@ return {
                 end
         end,
     },
-    { "tpope/vim-repeat" },
+    {
+        "tpope/vim-repeat",
+        enabled = false,
+    },
 
 }

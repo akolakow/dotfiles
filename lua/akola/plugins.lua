@@ -67,6 +67,15 @@ return {
                     -- Instead of true it can also be a list of languages
                     additional_vim_regex_highlighting = false,
                 },
+                incremental_selection = {
+                    enable  = true,
+                    keymaps = {
+                        init_selection    = 's', -- start selection at node under cursor
+                        node_incremental  = 's', -- grow to next parent node
+                        scope_incremental = false, -- jump to next scope (function, class…)
+                        node_decremental  = 'S', -- shrink selection
+                    },
+                },
             }
         end
     },
@@ -80,6 +89,38 @@ return {
         "nvim-treesitter/playground",
         lazy = false,
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        lazy = false,
+        dependencies = { 'nvim-treesitter/nvim-treesitter' },
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
+                textobjects = {
+                    select = {
+                        enable = true,
+
+                        -- Automatically jump forward to textobj, similar to targets.vim
+                        lookahead = true,
+
+                        keymaps = {
+                            -- You can use the capture groups defined in textobjects.scm
+                            ["ia"] = "@parameter.inner",
+                            ["aa"] = "@parameter.outer",
+                        },
+                    },
+                    swap = {
+                        enable = true,
+                        swap_next = {
+                            ["<leader>sa"] = "@parameter.inner",
+                        },
+                        swap_previous = {
+                            ["<leader>sA"] = "@parameter.inner",
+                        },
+                    },
+                },
+            }
+        end
     },
     {
         "nvim-treesitter/nvim-treesitter-refactor",
