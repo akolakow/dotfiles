@@ -1,6 +1,9 @@
 [window]
 opacity=0.9
 
+[env]
+term = "xterm-256color"
+
 [font]
 size = 11.0
 [font.normal]
