@@ -79,7 +79,7 @@ input "2:8:AlpsPS/2_ALPS_DualPoint_TouchPad" {
     bindsym $mod+Shift+q kill
 
     # Start your launcher
-    bindsym $mod+d exec $menu
+    bindsym $mod+r exec $menu
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -206,7 +206,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+s mode "resize"
 #
 # Utilities:
 #
@@ -241,5 +241,7 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+for_window [app_id="pavucontrol"] floating enable, sticky enable
 
 include /etc/sway/config.d/*
