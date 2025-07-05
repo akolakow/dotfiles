@@ -1,6 +1,3 @@
-vim.o.background = "dark" 
-vim.cmd([[colorscheme gruvbox]])
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 

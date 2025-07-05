@@ -11,8 +11,23 @@ return {
     {
         "ellisonleao/gruvbox.nvim",
         priority = 1000,
-        config = true,
-        opt = {}
+        -- config = true,
+        config = function()
+            vim.o.background = "dark"
+            vim.cmd([[colorscheme gruvbox]])
+            vim.g.is_bg_transparent = 0
+            function ToggleTransparent()
+                vim.g.is_bg_transparent = (vim.g.is_bg_transparent + 1) % 2
+                vim.cmd([[colorscheme gruvbox]])
+                if vim.g.is_bg_transparent == 1 then
+                    vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+                    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+                end
+            end
+
+            vim.keymap.set('n', '<leader>t', '<cmd>lua ToggleTransparent()<CR>', { noremap = true })
+        end
+
     },
     {
         "lewis6991/gitsigns.nvim",
@@ -48,7 +63,7 @@ return {
         config = function()
             require 'nvim-treesitter.configs'.setup {
                 -- A list of parser names, or "all"
-                ensure_installed = { "vimdoc", "javascript", "typescript", "c", "cpp", "python", "lua", "rust" },
+                ensure_installed = { "javascript", "typescript", "c", "cpp", "python", "lua", "vimdoc", "rust" },
 
                 -- Install parsers synchronously (only applied to `ensure_installed`)
                 sync_install = false,
@@ -70,10 +85,10 @@ return {
                 incremental_selection = {
                     enable  = true,
                     keymaps = {
-                        init_selection    = 's', -- start selection at node under cursor
-                        node_incremental  = 's', -- grow to next parent node
+                        init_selection    = 's',   -- start selection at node under cursor
+                        node_incremental  = 's',   -- grow to next parent node
                         scope_incremental = false, -- jump to next scope (function, class…)
-                        node_decremental  = 'S', -- shrink selection
+                        node_decremental  = 'S',   -- shrink selection
                     },
                 },
             }
