@@ -1,5 +1,23 @@
 return {
     {
+        'MeanderingProgrammer/render-markdown.nvim',
+        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
+        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
+        ---@module 'render-markdown'
+        ---@type render.md.UserConfig
+        opts = {
+            indent = {
+                enabled      = true, -- turn the feature on
+                per_level    = 2, -- 2 cells for each extra `#`
+                skip_level   = 1, -- ignore the top‑level H1
+                skip_heading = false, -- indent the heading line itself
+                icon         = " ", -- character shown in the margin
+                highlight    = "Comment",
+            },
+        },
+    },
+    {
         "ibhagwan/fzf-lua",
         dependencies = { "nvim-tree/nvim-web-devicons" },
         config = function()

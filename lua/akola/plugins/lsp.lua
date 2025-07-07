@@ -12,7 +12,7 @@ return {
                 "pyright",
                 "ts_ls",
                 "rust_analyzer",
-                "clangd"
+                "clangd", "marksman"
             },
         },
     },
@@ -52,16 +52,18 @@ return {
             })
             lspconfig.pyright.setup({})
             lspconfig.ts_ls.setup({})
+            lspconfig.marksman.setup({})
             lspconfig.rust_analyzer.setup({})
             lspconfig.clangd.setup({
                 cmd = {
                     "clangd",
+                    "--enable-config",
                     "--background-index",
                     "--clang-tidy",
                     "--header-insertion=iwyu",
                     "--completion-style=detailed",
                     "--function-arg-placeholders",
-                    "--fallback-style=llvm", }
+                    "--fallback-style=Chromium", }
             })
         end
     },
@@ -114,7 +116,8 @@ return {
             -- Default list of enabled providers defined so that you can extend it
             -- elsewhere in your config, without redefining it, due to `opts_extend`
             sources = {
-                default = { 'lsp', 'path', 'snippets', 'buffer' },
+                -- default = { 'lsp', 'path', 'snippets', 'buffer' },
+                default = { 'lsp', 'path', 'buffer' },
             },
 
             -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
