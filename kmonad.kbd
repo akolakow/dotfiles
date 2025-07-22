@@ -48,15 +48,12 @@
     lsft  z     x     c     v     b     ~     /     ,     .     /
 )
 
+
 (deflayer ldr;
     _     brdn  brup  lp    mctl  bldn  blup  prev  pp    next  mute  vold  volu
     _     _     _     _     _     _     _     _     _     _     _     _     _     _
     tab   .     7     [     ]     t     y     u     i     o     p   
-    esc   0     4     {     }     g     h     @sftj @ctlk @altl @ldr;
+    esc   ret   4     {     }     g     h     @sftj @ctlk @altl @ldr;
     lsft  z     1     \(    \)    b     n     m     ,     .     /
 )
-
-
-
-
 
