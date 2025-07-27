@@ -17,13 +17,13 @@
 
 (defalias
     meta (tap-hold-next-release 200 a lmet)
-    alts (tap-hold-next-release 200 s ralt)
+    alts (tap-hold-next-release 200 s lalt)
     ctld (tap-hold-next-release 200 d lctl)
     sftf (tap-hold-next-release 200 f lsft)
 
     sftj (tap-hold-next-release 200 j rsft)
     ctlk (tap-hold-next-release 200 k rctl)
-    altl (tap-hold-next-release 200 l ralt)
+    altl (tap-hold-next-release 200 l lalt)
     met; (tap-hold-next-release 200 ; rmet)
     metn (tap-hold-next-release 200 n rmet)
 
