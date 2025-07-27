@@ -34,3 +34,35 @@ vim.g.netrw_liststyle = 3
 
 
 vim.api.nvim_set_option("clipboard", "unnamed")
+
+-- vim.cmd[[let g:markdown_folding = 1 ]]
+
+vim.g.markdown_folding = 1
+-- -- Define the function globally so it can be called from keymap
+-- function _G.MapTabBasedOnFold()
+--   local line = vim.fn.line(".")
+--   if vim.fn.foldclosed(line) == -1 then
+--     -- Fold is open
+--     vim.api.nvim_feedkeys("zc", "n", false)
+--   else
+--     -- Fold is closed
+--     vim.api.nvim_feedkeys("zo", "n", false)
+--   end
+-- end
+--
+-- -- Create autocommand to set mapping only for Markdown files
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = "markdown",
+--   callback = function()
+--     vim.keymap.set("n", "<Tab>", "<cmd>lua MapTabBasedOnFold()<CR>", { buffer = true, noremap = true, silent = true })
+--   end
+-- })
+
+-- Create autocommand to set mapping only for Markdown files
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = "markdown",
+    callback = function()
+        vim.keymap.set("n", "<Tab>", "za", { buffer = true, noremap = true, silent = true })
+        vim.o.foldtext = ""
+    end
+})
