@@ -52,7 +52,7 @@
 (deflayer ldr;
     _     brdn  brup  lp    mctl  bldn  blup  prev  pp    next  mute  vold  volu
     _     _     _     _     _     _     _     _     _     _     _     _     _     _
-    tab   .     7     [     ]     t     y     u     i     o     p   
+    tab   ^     $     [     ]     t     y     u     i     o     p   
     esc   ret   4     {     }     g     h     @sftj @ctlk @altl @ldr;
     lsft  z     1     \(    \)    b     n     m     ,     .     /
 )
