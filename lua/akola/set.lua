@@ -43,5 +43,11 @@ vim.api.nvim_create_autocmd("FileType", {
     callback = function()
         vim.keymap.set("n", "<Tab>", "za", { buffer = true, noremap = true, silent = true })
         vim.o.foldtext = ""
+
+        vim.o.textwidth = 80
+        -- vim.o.wrap = true
+        -- vim.o.columns = 80
+        -- vim.keymap.set("n", "j", "gj", { buffer = true, noremap = true, silent = true })
+        -- vim.keymap.set("n", "k", "gk", { buffer = true, noremap = true, silent = true })
     end
 })

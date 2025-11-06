@@ -1,28 +1,17 @@
 return {
     {
         'echasnovski/mini.surround',
-        version = false,
+        version = "*",
         config = function()
             require('mini.surround').setup()
         end
     },
     {
-        'MeanderingProgrammer/render-markdown.nvim',
-        dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.nvim' }, -- if you use the mini.nvim suite
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' }, -- if you use standalone mini plugins
-        -- dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' }, -- if you prefer nvim-web-devicons
-        ---@module 'render-markdown'
-        ---@type render.md.UserConfig
-        opts = {
-            indent = {
-                enabled      = true,  -- turn the feature on
-                per_level    = 2,     -- 2 cells for each extra `#`
-                skip_level   = 1,     -- ignore the top‑level H1
-                skip_heading = false, -- indent the heading line itself
-                icon         = " ",   -- character shown in the margin
-                highlight    = "Comment",
-            },
-        },
+        'echasnovski/mini.files',
+        version = '*',
+        config = function()
+            require('mini.files').setup()
+        end
     },
     {
         "ibhagwan/fzf-lua",
@@ -110,10 +99,10 @@ return {
                 incremental_selection = {
                     enable  = true,
                     keymaps = {
-                        init_selection    = 'si',   -- start selection at node under cursor
-                        node_incremental  = 'si',   -- grow to next parent node
+                        init_selection    = 'si',  -- start selection at node under cursor
+                        node_incremental  = 'si',  -- grow to next parent node
                         scope_incremental = false, -- jump to next scope (function, class…)
-                        node_decremental  = 'sI',   -- shrink selection
+                        node_decremental  = 'sI',  -- shrink selection
                     },
                 },
             }

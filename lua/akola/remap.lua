@@ -11,5 +11,8 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 
 vim.keymap.set("n", "Q", "<nop>")
 
-vim.keymap.set('n', '<leader>e', '<cmd>Lex %:p:h<CR>', { noremap = true })
+-- vim.keymap.set('n', '<leader>e', '<cmd>Lex %:p:h<CR>', { noremap = true })
+vim.keymap.set('n', '<leader>e', function()
+    MiniFiles.open(vim.fn.expand('%:p:h'))
+end, { noremap = true })
 vim.keymap.set("n", "<leader>ch", "<cmd>ClangdSwitchSourceHeader<CR>")
