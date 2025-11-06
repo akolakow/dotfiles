@@ -59,10 +59,10 @@ automatically-unhide-macos-hidden-apps = false
 [gaps]
     inner.horizontal = 10
     inner.vertical =   10
-    outer.left =       20
+    outer.left =       [{monitor."C34J79x" = 440 }, 20]
     outer.bottom =     20
     outer.top =        20
-    outer.right =      20
+    outer.right =      [{monitor."C34J79x" = 440 }, 20]
 
 # 'main' binding mode declaration
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
