@@ -17,6 +17,9 @@ return {
             dap.listeners.before.event_exited.dapui_config = function()
                 dapui.close()
             end
+            vim.keymap.set('n', '<leader>dd', function()
+                require("dapui").eval()
+            end, { noremap = true })
         end
     },
     {
@@ -41,6 +44,10 @@ return {
 
             vim.keymap.set('n', '<leader>ds', function()
                 require 'dap'.step_into()
+            end, { noremap = true })
+
+            vim.keymap.set('n', '<leader>dt', function()
+                require 'dap'.terminate()
             end, { noremap = true })
 
             --
@@ -100,6 +107,26 @@ return {
                     processId = require('dap.utils').pick_process,
                 },
             }
+
+            -- Run last: https://github.com/mfussenegger/nvim-dap/issues/1025
+            local last_config = nil
+            ---@param session Session
+            dap.listeners.after.event_initialized["store_config"] = function(session)
+              last_config = session.config
+            end
+
+            local function debug_run_last()
+              if last_config then
+                dap.run(last_config)
+              else
+                dap.continue()
+              end
+            end
+
+            vim.keymap.set('n', '<Leader>dl', function()
+                debug_run_last()
+            end)
+
         end
     },
 }
