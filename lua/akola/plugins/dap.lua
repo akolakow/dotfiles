@@ -108,6 +108,32 @@ return {
                 },
             }
 
+            dap.adapters.python = {
+                id = 'python',
+                type = 'executable',
+                command = 'python3',
+                args = { '-m', 'debugpy.adapter' },
+            }
+
+            dap.configurations.python = {
+                {
+                    type = 'python';
+                    request = 'launch';
+                    name = "Launch file";
+                    program = "${file}";
+                    pythonPath = function()
+                      return vim.fn.exepath("python")
+                    end;
+                },
+                {
+                    type = 'python',
+                    request = 'launch',
+                    name = 'Launch module',
+                    module = '${fileBasenameNoExtension}',
+                },
+            }
+
+
             -- Run last: https://github.com/mfussenegger/nvim-dap/issues/1025
             local last_config = nil
             ---@param session Session
