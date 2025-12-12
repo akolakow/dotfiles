@@ -56,18 +56,18 @@ return {
             -- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html
             local dap = require("dap")
             dap.adapters.gdb = {
-              type = "executable",
-              command = "gdb",
-              args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+                type = "executable",
+                command = "gdb",
+                args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
             }
 
- 
-            dap.adapters.codelldb = {
-              type = "executable",
-              command = "codelldb", -- or if not in $PATH: "/absolute/path/to/codelldb"
 
-              -- On windows you may have to uncomment this:
-              -- detached = false,
+            dap.adapters.codelldb = {
+                type = "executable",
+                command = "codelldb", -- or if not in $PATH: "/absolute/path/to/codelldb"
+
+                -- On windows you may have to uncomment this:
+                -- detached = false,
             }
 
             dap.configurations.cpp = {
@@ -76,7 +76,7 @@ return {
                     type = 'gdb',
                     request = 'launch',
                     program = function()
-                          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+                        return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
                     end,
                 },
                 {
@@ -108,9 +108,9 @@ return {
                     processId = require('dap.utils').pick_process,
                 },
                 {
-                     name = "Codelldb",
-                     type = "codelldb",
-                     request = "launch",
+                    name = "Codelldb",
+                    type = "codelldb",
+                    request = "launch",
                     program = function()
                         local path = vim.fn.input({
                             prompt = 'Path to executable: ',
@@ -120,8 +120,8 @@ return {
 
                         return (path and path ~= '') and path or dap.ABORT
                     end,
-                     cwd = "${workspaceFolder}",
-                     stopOnEntry = false,
+                    cwd = "${workspaceFolder}",
+                    stopOnEntry = false,
                 }
             }
 
@@ -134,13 +134,13 @@ return {
 
             dap.configurations.python = {
                 {
-                    type = 'python';
-                    request = 'launch';
-                    name = "Launch file";
-                    program = "${file}";
+                    type = 'python',
+                    request = 'launch',
+                    name = "Launch file",
+                    program = "${file}",
                     pythonPath = function()
-                      return vim.fn.exepath("python")
-                    end;
+                        return vim.fn.exepath("python")
+                    end,
                 },
                 {
                     type = 'python',
@@ -155,21 +155,20 @@ return {
             local last_config = nil
             ---@param session Session
             dap.listeners.after.event_initialized["store_config"] = function(session)
-              last_config = session.config
+                last_config = session.config
             end
 
             local function debug_run_last()
-              if last_config then
-                dap.run(last_config)
-              else
-                dap.continue()
-              end
+                if last_config then
+                    dap.run(last_config)
+                else
+                    dap.continue()
+                end
             end
 
             vim.keymap.set('n', '<Leader>dl', function()
                 debug_run_last()
             end)
-
         end
     },
 }
