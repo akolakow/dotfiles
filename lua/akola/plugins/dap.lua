@@ -54,11 +54,20 @@ return {
             -- See
             -- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Interpreters.html
             -- https://sourceware.org/gdb/current/onlinedocs/gdb.html/Debugger-Adapter-Protocol.html
+            local dap = require("dap")
             dap.adapters.gdb = {
-                id = 'gdb',
-                type = 'executable',
-                command = 'gdb',
-                args = { '--quiet', '--interpreter=dap' },
+              type = "executable",
+              command = "gdb",
+              args = { "--interpreter=dap", "--eval-command", "set print pretty on" }
+            }
+
+ 
+            dap.adapters.codelldb = {
+              type = "executable",
+              command = "codelldb", -- or if not in $PATH: "/absolute/path/to/codelldb"
+
+              -- On windows you may have to uncomment this:
+              -- detached = false,
             }
 
             dap.configurations.cpp = {
@@ -66,16 +75,8 @@ return {
                     name = 'Run executable (GDB)',
                     type = 'gdb',
                     request = 'launch',
-                    -- This requires special handling of 'run_last', see
-                    -- https://github.com/mfussenegger/nvim-dap/issues/1025#issuecomment-1695852355
                     program = function()
-                        local path = vim.fn.input({
-                            prompt = 'Path to executable: ',
-                            default = vim.fn.getcwd() .. '/',
-                            completion = 'file',
-                        })
-
-                        return (path and path ~= '') and path or dap.ABORT
+                          return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
                     end,
                 },
                 {
@@ -106,6 +107,22 @@ return {
                     request = 'attach',
                     processId = require('dap.utils').pick_process,
                 },
+                {
+                     name = "Codelldb",
+                     type = "codelldb",
+                     request = "launch",
+                    program = function()
+                        local path = vim.fn.input({
+                            prompt = 'Path to executable: ',
+                            default = vim.fn.getcwd() .. '/',
+                            completion = 'file',
+                        })
+
+                        return (path and path ~= '') and path or dap.ABORT
+                    end,
+                     cwd = "${workspaceFolder}",
+                     stopOnEntry = false,
+                }
             }
 
             dap.adapters.python = {
