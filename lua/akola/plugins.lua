@@ -11,7 +11,13 @@ return {
         config = function()
             require("neotest").setup({
                 adapters = {
-                    require("neotest-gtest").setup({}),
+                    require("neotest-gtest").setup({
+    is_test_file = function(file)
+      local stem = file:match("([^/\\]+)%.%w+$")
+      if not stem then return false end
+      return stem:match("_TEST") or stem:match("_test")  or file:match("^test_") or file:match("^TEST_")
+  end,
+                    }),
                 },
             })
 
