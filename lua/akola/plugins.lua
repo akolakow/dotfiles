@@ -1,5 +1,29 @@
 return {
     {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter",
+            "alfaix/neotest-gtest"
+        },
+        config = function()
+            require("neotest").setup({
+                adapters = {
+                    require("neotest-gtest").setup({}),
+                },
+            })
+
+            vim.keymap.set('n', '<leader>tr', function() require("neotest").run.run() end, { noremap = true })
+            vim.keymap.set('n', '<leader>tk', function() require("neotest").run.stop() end, { noremap = true })
+            vim.keymap.set('n', '<leader>tf', function() require("neotest").run.run(vim.fn.expand("%")) end, { noremap = true })
+            vim.keymap.set('n', '<leader>td', function() require("neotest").run.run({strategy = "dap"}) end, { noremap = true })
+            vim.keymap.set('n', '<leader>ts', function() require("neotest").summary.toggle() end, { noremap = true })
+        end,
+
+    },
+    {
         'echasnovski/mini.surround',
         version = "*",
         config = function()
