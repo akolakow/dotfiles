@@ -6,11 +6,13 @@ return {
             "nvim-lua/plenary.nvim",
             "antoinemadec/FixCursorHold.nvim",
             "nvim-treesitter/nvim-treesitter",
-            "alfaix/neotest-gtest"
+            "alfaix/neotest-gtest",
+            "nvim-neotest/neotest-python"
         },
         config = function()
             require("neotest").setup({
                 adapters = {
+                    require("neotest-python");
                     require("neotest-gtest").setup({
     is_test_file = function(file)
       local stem = file:match("([^/\\]+)%.%w+$")

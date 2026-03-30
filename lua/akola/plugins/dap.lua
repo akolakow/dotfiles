@@ -122,6 +122,28 @@ return {
                     end,
                     cwd = "${workspaceFolder}",
                     stopOnEntry = false,
+                },
+                {
+                    name = "Codelldb with arguments",
+                    type = "codelldb",
+                    request = "launch",
+                    program = function()
+                        local path = vim.fn.input({
+                            prompt = 'Path to executable: ',
+                            default = vim.fn.getcwd() .. '/',
+                            completion = 'file',
+                        })
+
+                        return (path and path ~= '') and path or dap.ABORT
+                    end,
+                    args = function()
+                        local args_str = vim.fn.input({
+                            prompt = 'Arguments: ',
+                        })
+                        return vim.split(args_str, ' +')
+                    end,
+                    cwd = "${workspaceFolder}",
+                    stopOnEntry = false,
                 }
             }
 
