@@ -9,14 +9,18 @@ vim.pack.add({
     'https://github.com/nvim-treesitter/nvim-treesitter-context',
     'https://github.com/nvim-treesitter/nvim-treesitter-textobjects',
     { src = "https://github.com/saghen/blink.cmp", version = vim.version.range("^1") },
-    "https://github.com/github/copilot.vim",
+    'https://github.com/github/copilot.vim',
     "https://github.com/mason-org/mason.nvim",
-    'https://github.com/neovim/nvim-lspconfig'
+    'https://github.com/neovim/nvim-lspconfig',
+    'https://github.com/nvimtools/none-ls.nvim',
+    'https://github.com/nvim-lua/plenary.nvim',
+    'https://github.com/zbiko/perfnvim'
 })
 
 
 vim.cmd.colorscheme('gruvbox')
 
+require("perfnvim").setup()
 require('mini.files').setup()
 require("mason").setup()
 
@@ -88,7 +92,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         vim.keymap.set("n", "<leader>cs", "<cmd>FzfLua lsp_live_workspace_symbols<CR>", opts)
         vim.keymap.set("n", "<leader>cbs", "<cmd>FzfLua lsp_document_symbols<CR>", opts)
         vim.keymap.set("n", "<leader>cd", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-        vim.keymap.set("n", "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+        vim.keymap.set({"n", "x"}, "<leader>cf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
         vim.keymap.set(
             "n",
             "<leader>ci",
@@ -128,3 +132,14 @@ vim.lsp.config("clangd", {
     },
 })
 vim.lsp.enable('clangd')
+local null_ls = require("null-ls")
+
+null_ls.setup({
+    sources = {
+        null_ls.builtins.formatting.prettier.with({
+            filetypes = { "markdown", "json" }, -- only use for markdown
+            extra_args = { "--print-width", "80", "--prose-wrap", "always" },
+        }),
+    },
+})
+
